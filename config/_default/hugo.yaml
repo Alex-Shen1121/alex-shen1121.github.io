@@ -6,6 +6,8 @@
 title: Homepage # Website name
 baseURL: 'https://codingshen.top/' # Website URL
 
+googleAnalytics: G-XXXXXXXXXX
+
 ############################
 ## LANGUAGE
 ############################
@@ -19,9 +21,10 @@ removePathAccents: true
 ## ADVANCED
 ############################
 
+pagination:
+  pagerSize: 10
 enableGitInfo: false
 summaryLength: 30
-paginate: 10
 enableEmoji: true
 enableRobotsTXT: true
 footnotereturnlinkcontents: <sup>^</sup>

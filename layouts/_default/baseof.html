@@ -1,0 +1,27 @@
+{{- /* Override baseof.html to fix Hugo compatibility */ -}}
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en-us" }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{- block "seo/meta" . -}}
+    {{ partial "blox_seo" . }}
+  {{- end -}}
+  {{- block "headlibs" . -}}
+    {{ partial "site_head" . }}
+  {{- end -}}
+  {{- range .AlternativeOutputFormats -}}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+  {{- end -}}
+  {{- range .Site.Languages -}}
+    <link rel="alternate" hreflang="{{ .Lang }}" href="{{ $.Permalink | absLangURL }}">
+  {{- end -}}
+  <title>{{- block "title" . -}}{{ .Title }} | {{ .Site.Title }}{{- end -}}</title>
+</head>
+
+<body {{- if .Site.Params.appearance.dark_mode -}} class="dark" {{- end -}}>
+  {{- block "about/biography" . -}}{{- end -}}
+  {{- block "main" . }}{{- end }}
+</body>
+</html>
